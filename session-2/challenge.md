@@ -1,4 +1,4 @@
-Given the user id, find out all the posts belong to the user and for each post, find out all the related comments with the creator info of the comments
+Given the user id, find out all the posts belong to the user and for each post, find out all the related comments
 
 
 *** https://jsonplaceholder.typicode.com/ ***
@@ -14,12 +14,8 @@ expected output:
     comments: [
       {
         id: 3,
-        body: "non et atque occaecati deserunt quas accusantium unde odit nobis qui voluptatem quia voluptas consequuntur itaque dolor et qui rerum deleniti ut occaecati",
-        user: {
-          name: "Leanne Graham",
-          username: "Bret",
-          email: "Sincere@april.biz"
-        }
+        body: "non et atque occaecati deserunt quas accusantium unde odit nobis qui voluptatem quia voluptas consequuntur itaque dolor et qui rerum deleniti ut occaecati"
+   
       },
       ...
     ]

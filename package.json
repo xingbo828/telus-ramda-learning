@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
+    "node-fetch": "^2.1.2",
     "ramda": "^0.25.0"
   },
   "scripts": {
@@ -11,8 +12,8 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-jest": "^22.4.3",
-    "regenerator-runtime": "^0.11.1",
     "babel-preset-env": "^1.6.1",
-    "jest": "^22.4.3"
+    "jest": "^22.4.3",
+    "regenerator-runtime": "^0.11.1"
   }
 }
