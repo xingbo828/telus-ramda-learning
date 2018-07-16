@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import {
+import R, {
   take,
   pipeP,
   pipe,
@@ -7,7 +7,6 @@ import {
   map,
   pick,
   bind,
-  tap
 } from 'ramda';
 
 
@@ -18,8 +17,10 @@ fdescribe('session 2 challenge solution', () => {
 
     const attachCommentsToPost = async (post) => {
       const comments = await fetchCommetsByPostId(post.id)
-      const updatedComments = map(pick(['name', 'email', 'body']), comments)
-      return assoc('comments', updatedComments, post)
+      return pipe(
+        map(pick(['name', 'email', 'body'])),
+        assoc('comments', R.__, post)
+      )(comments)
     };
 
     const processPosts = pipe(map(attachCommentsToPost), bind(Promise.all, Promise))
