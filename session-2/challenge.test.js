@@ -13,14 +13,16 @@ import R, {
 fdescribe('session 2 challenge solution', () => {
   it('', async () => {
     const fetchPostsByUserId = (userId) => fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`).then(res => res.json())
-    const fetchCommetsByPostId = (postId) => fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`).then(res => res.json())
+    const fetchCommetsByPostId = ({ id }) => fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`).then(res => res.json())
 
-    const attachCommentsToPost = async (post) => {
-      const comments = await fetchCommetsByPostId(post.id)
-      return pipe(
-        map(pick(['name', 'email', 'body'])),
-        assoc('comments', R.__, post)
-      )(comments)
+    const attachCommentsToPost =  (post) => {
+      return pipeP(
+        fetchCommetsByPostId,
+        pipe(
+          map(pick(['name', 'email', 'body'])),
+          assoc('comments', R.__, post)
+        )
+      )(post)
     };
 
     const processPosts = pipe(map(attachCommentsToPost), bind(Promise.all, Promise))
